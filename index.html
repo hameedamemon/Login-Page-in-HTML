@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login, Signup, and Forgot Password</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #26a69a;
+            /* Teal background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #1a1a2e;
+            /* Dark blue container */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .container.active {
+            display: block;
+            /* Show active container */
+        }
+
+        .container h2 {
+            color: #ffffff;
+            /* White text */
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .container label {
+            color: #cccccc;
+            /* Light gray labels */
+            font-size: 14px;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        .container input,
+        .container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #26a69a;
+            /* Teal button */
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #1e8e8c;
+        }
+
+        .container a {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #26a69a;
+            text-decoration: none;
+        }
+
+        .container a:hover {
+            text-decoration: underline;
+        }
+
+        .container .signup,
+        .container .back-to-login {
+            color: #cccccc;
+            margin-top: 15px;
+        }
+
+        .container .signup a,
+        .container .back-to-login a {
+            color: #26a69a;
+        }
+
+        .gender {
+            display: flex;
+            justify-content: space-between;
+            /* Space options evenly in a row */
+            margin-bottom: 20px;
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .gender-option {
+            display: flex;
+            align-items: center;
+            /* Vertically center the label and radio button */
+            gap: 5px;
+            /* Add spacing between the radio button and the label */
+        }
+
+        .gender-option label {
+            color: #cccccc;
+            font-size: 14px;
+            cursor: pointer;
+            /* Makes the label clickable */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Login Page -->
+    <div class="container active" id="login-form">
+        <h2>Login Form</h2>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Email Address">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password">
+        <a href="#" onclick="showPage('forgot-password-form')">Forgot password?</a>
+        <button>Login</button>
+        <div class="signup">
+            Not a member? <a href="#" onclick="showPage('signup-form')">Signup now</a>
+        </div>
+    </div>
+
+    <!-- Forgot Password Page -->
+    <div class="container" id="forgot-password-form">
+        <h2>Forgot Password</h2>
+        <label for="forgot-email">Email Address</label>
+        <input type="email" id="forgot-email" placeholder="Enter your email">
+        <button>Submit</button>
+        <div class="back-to-login">
+            Back to <a href="#" onclick="showPage('login-form')">Login</a>
+        </div>
+    </div>
+
+    <!-- Signup Page -->
+    <div class="container" id="signup-form">
+        <h2>Signup Form</h2>
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" placeholder="First Name">
+
+        <label for="country">Country</label>
+        <select id="country">
+            <option value="" disabled selected>Select Country</option>
+            <option value="pk">Pakistan</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="in">India</option>
+            <option value="au">Australia</option>
+            <option value="ca">Canada</option>
+            <!-- Add other countries as needed -->
+        </select>
+
+        <label>Gender</label>
+        <div class="gender">
+            <div class="gender-option">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+            </div>
+            <div class="gender-option">
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+            </div>
+            <div class="gender-option">
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+        </div>
+
+
+
+        <label for="phone">Phone Number</label>
+        <div style="display: flex; gap: 5px;">
+            <select id="country-code" style="width: 30%;">
+                <option value="+92">+92</option>
+
+                <option value="+1">+1</option>
+                <option value="+44">+44</option>
+                <option value="+91">+91</option>
+                <option value="+61">+61</option>
+                <option value="+1">+1</option>
+            </select>
+            <input type="tel" id="phone" placeholder="Phone Number" style="width: 70%;">
+        </div>
+
+        <label for="signup-email">Email Address</label>
+        <input type="email" id="signup-email" placeholder="Email Address">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Password">
+        <label for="signup-confirm-password">Confirm Password</label>
+        <input type="password" id="signup-confirm-password" placeholder="Confirm Password">
+        <button>Signup</button>
+        <div class="back-to-login">
+            Already have an account? <a href="#" onclick="showPage('login-form')">Login here</a>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all containers
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Show the selected container
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
